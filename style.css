@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+}
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+  gap: 5px;
+}
