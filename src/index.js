@@ -2,14 +2,14 @@
 //displays city with state, user clicks to get desired location weather
 
 let userSearch; //get element from DOM, we will set city to that on submit;
-const SEARCHBAR = document.querySelector('search-field');
-const SEARCHBUTTON = document.getElementById('search-button');
-SEARCHBUTTON.addEventListener('click', getCity);
+const SEARCHBAR = document.querySelector("search-field");
+const SEARCHBUTTON = document.getElementById("search-button");
+SEARCHBUTTON.addEventListener("click", getCity);
 let city;
 
 function getCity() {
   city = SEARCHBAR.value;
-  SEARCHBAR.textContent = '';
+  SEARCHBAR.textContent = "";
 }
 
 //getCoordinates() converts user city search into coordinates useable by the API call in getWeather() via Geocoding API
@@ -17,7 +17,7 @@ function getCity() {
 async function getCoordinates(city) {
   let response = await fetch(
     `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=3&appid=9233d7d5b5dca12db8dc4eccb6554d50`,
-    { mode: 'cors' }
+    { mode: "cors" }
   );
   console.log(response);
   let data = await response.json();
@@ -35,7 +35,7 @@ async function getWeather(lat, lon) {
   getCoordinates(userSearch);
   let response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=9233d7d5b5dca12db8dc4eccb6554d50`,
-    { mode: 'cors' }
+    { mode: "cors" }
   );
   console.log(response);
   let weatherData = await response.json();
@@ -44,8 +44,8 @@ async function getWeather(lat, lon) {
 }
 
 //test calls
-getCoordinates('buffalo');
-getWeather('42.8867166', '-78.8783922');
+getCoordinates("buffalo");
+getWeather("42.8867166", "-78.8783922");
 
 // these will run when the fahrenheit/celsius button is pressed and convert the fetched temperature
 
