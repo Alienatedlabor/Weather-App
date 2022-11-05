@@ -1,5 +1,3 @@
-// make dropdown menu to display full json array for city options
-// displays city with state, user clicks to get desired location weather
 let userSearch; // get element from DOM, we will set city to that on submit;
 const SEARCHBAR = document.querySelector('.search-field');
 const SEARCHBUTTON = document.getElementById('search-button');
@@ -12,7 +10,6 @@ async function getCoordinates() {
     { mode: 'cors' }
   );
   const data = await response.json();
-  console.log(data);
   const { lat, lon } = data[0];
   return { lat, lon };
 }
@@ -35,8 +32,10 @@ async function handleSubmit(e) {
   console.log(SEARCHBAR);
   const { lat, lon } = await getCoordinates();
   const weather = getWeather(lat, lon);
+  return weather;
 }
 SEARCHBUTTON.addEventListener('click', handleSubmit);
+
 // these will run when the fahrenheit/celsius button is pressed and convert the fetched temperature
 
 // const ftoc = function (farenheitInput) {
