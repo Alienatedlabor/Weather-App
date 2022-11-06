@@ -8,7 +8,7 @@ async function getCoordinates() {
     { mode: 'cors' }
   );
   const data = await response.json();
-  const { lat, lon } = data[0];
+  const { lat, lon } = data[0] || data;
   return { lat, lon };
 }
 
