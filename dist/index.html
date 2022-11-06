@@ -43,14 +43,23 @@
         <main>
           <!-- degrees: &#176; , percent: &#37; -->
           <h1>Current Weather</h1>
-          <p><span class="current-city"></span></p>
-          <p><span class="current-temp"></span>&#176;</p>
-          <p><span class="feels-like">10</span>&#176;</p>
-          <p><span class="temp-max">100</span>&#176;</p>
-          <p><span class="temp-min">0</span>&#176;</p>
-          <p><span class="humidity">22</span>&#37;</p>
-          <p><span class="sunrise">6:00</span></p>
-          <p><span class="sunset">9:00</span></p>
+          <div class="current-results">
+            <p>
+              <span class="current-city"></span>, <span class="country"></span>
+            </p>
+            <label for="">Current Temperature:</label>
+            <p><span class="current-temp"></span>&#176;</p>
+            <label for="">Feels like:</label>
+            <p><span class="feels-like"></span>&#176;</p>
+            <label for="">Temperature High:</label>
+            <p><span class="temp-max"></span>&#176;</p>
+            <label for="">Temperature Low:</label>
+            <p><span class="temp-min"></span>&#176;</p>
+            <label for="">Humidity:</label>
+            <p><span class="humidity"></span>&#37;</p>
+            <p><span class="sunrise"></span></p>
+            <p><span class="sunset"></span></p>
+          </div>
         </main>
       </section>
       <section>
