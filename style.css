@@ -38,6 +38,9 @@ main {
   width: 100vw;
   height: 70vh;
 }
+.current-results {
+  display: grid;
+}
 h1 {
   display: flex;
   justify-content: center;
