@@ -7,9 +7,11 @@ const country = document.querySelector('.country');
 const currentTemp = document.querySelector('.current-temp');
 const feelsLike = document.querySelector('.feels-like');
 const humidity = document.querySelector('.humidity');
-const sunrise = document.querySelector('.sunrise');
-const sunset = document.querySelector('.sunset');
+const sunriseText = document.querySelector('.sunrise');
+const sunsetText = document.querySelector('.sunset');
 const description = document.querySelector('.description');
+const container = document.querySelector('.grid-wrapper');
+
 // function
 async function updateView() {
   const data = await getWeather();
@@ -25,13 +27,25 @@ async function updateView() {
   description.textContent = data.weather[0].description;
   humidity.textContent = data.main.humidity;
   country.textContent = data.sys.country;
-  sunrise.textContent = convertedSunrise;
-  sunset.textContent = convertedSunset;
+  sunriseText.textContent = convertedSunrise;
+  sunsetText.textContent = convertedSunset;
 }
 
 async function updateWeeklyView() {
   const weeklyData = await getWeeklyWeather();
   console.log(weeklyData);
+}
+
+async function changeBackground() {
+  const data = await getWeather();
+  const currentTime = data.dt;
+  const { sunrise, sunset } = data.sys;
+  if (currentTime >= sunrise && currentTime < sunset) {
+    // daytime image
+    container.style.backgroundImage = 'url()';
+    // nighttime image
+    container.style.backgroundImage = 'url()';
+  }
 }
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
