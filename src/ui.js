@@ -42,12 +42,15 @@ async function changeBackground() {
   const { sunrise, sunset } = data.sys;
   if (currentTime >= sunrise && currentTime < sunset) {
     // daytime image
-    container.style.backgroundImage = 'url()';
+    container.style.backgroundImage =
+      'url(../assets/aaron-burden-BTubi6qaY6Q-unsplash.jpg)';
+  } else {
     // nighttime image
-    container.style.backgroundImage = 'url()';
+    container.style.backgroundImage =
+      'url(assets/mason-field-efLEMOPlPW8-unsplash.jpg)';
   }
 }
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
 
-export { updateView, updateWeeklyView };
+export { updateView, updateWeeklyView, changeBackground };
