@@ -22,3 +22,5 @@ const cToF = (celsiusInput) => {
 };
 
 export { timeConvert, fToC, cToF };
+
+// src=`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`

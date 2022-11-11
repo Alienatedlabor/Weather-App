@@ -23,6 +23,15 @@ async function getWeather() {
   const weatherData = await response.json();
   console.log(weatherData);
   return weatherData;
-  // Set variable.textContent to weatherData.{whatever property we need to display (temperatures, etc, check console log for key names)}
 }
-export default getWeather;
+// weeklyData.filter each list object that includes dt_txt: 13:00:00 and destructure for temp
+async function getWeeklyWeather() {
+  const { lat, lon } = await getCoordinates();
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=9233d7d5b5dca12db8dc4eccb6554d50`,
+    { mode: 'cors' }
+  );
+  const weeklyData = await response.json();
+  console.log(weeklyData);
+}
+export { getWeather, getWeeklyWeather };

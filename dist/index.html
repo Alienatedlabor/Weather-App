@@ -44,21 +44,26 @@
           <!-- degrees: &#176; , percent: &#37; -->
           <h1>Current Weather</h1>
           <div class="current-results">
-            <p>
-              <span class="current-city"></span>, <span class="country"></span>
-            </p>
-            <label for="">Current Temperature:</label>
-            <p><span class="current-temp"></span>&#176;</p>
+            <div class="location">
+              <p>
+                <span class="current-city"></span>,
+                <span class="country"></span>
+              </p>
+            </div>
+            <div class="main-temp">
+              <label for="">Current Temperature:</label>
+              <p><span class="current-temp"></span>&#176;</p>
+            </div>
             <label for="">Feels like:</label>
             <p><span class="feels-like"></span>&#176;</p>
-            <label for="">Temperature High:</label>
-            <p><span class="temp-max"></span>&#176;</p>
-            <label for="">Temperature Low:</label>
-            <p><span class="temp-min"></span>&#176;</p>
+            <p><span class="description"></span></p>
             <label for="">Humidity:</label>
             <p><span class="humidity"></span>&#37;</p>
+            <label for="">Sunrise:</label>
             <p><span class="sunrise"></span></p>
+            <label for="">Sunset</label>
             <p><span class="sunset"></span></p>
+            <img class="current-icon" src="" alt="" />
           </div>
         </main>
       </section>
@@ -67,9 +72,6 @@
         <div class="week-row">
           <div class="week-container">
             <h3>Monday</h3>
-            <!-- set icons according to weather info -->
-            <i class=""></i>
-            <!---->
             <p data-weekday="monday" class="weekly-temperature">dummy text</p>
           </div>
           <div class="week-container">
