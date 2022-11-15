@@ -5,7 +5,6 @@ function timeConvert(sunriseUTC, sunsetUTC) {
   const convertedSunset = fromUnixTime(sunsetUTC);
   return { convertedSunrise, convertedSunset };
 }
-
 // these will run when the fahrenheit/celsius button is pressed and convert the fetched temperature
 // refactor for weather app
 
@@ -21,6 +20,22 @@ const cToF = (celsiusInput) => {
   return farenheitResult;
 };
 
-export { timeConvert, fToC, cToF };
+const getCurrentLocation = () => {
+  const success = (position) => {
+    console.log(position);
+  };
+
+  const error = (err) => {
+    console.log(err);
+    alert('local weather cannot be displayed without location permissions');
+  };
+
+  navigator.geolocation.getCurrentPosition(success, error);
+};
+
+window.onload = () => {
+  getCurrentLocation();
+};
+export { timeConvert, fToC, cToF, getCurrentLocation };
 
 // src=`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`

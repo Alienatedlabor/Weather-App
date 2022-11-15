@@ -41,6 +41,9 @@ main {
 .current-results {
   display: grid;
 }
+.current-temp {
+  font-size: 60px;
+}
 h1 {
   display: flex;
   justify-content: center;

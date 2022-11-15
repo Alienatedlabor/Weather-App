@@ -35,15 +35,17 @@ async function updateWeeklyView() {
   const weeklyData = await getWeeklyWeather();
   console.log(weeklyData);
 }
+function setDefaultBackground() {}
 
-async function changeBackground() {
+async function changeBackgroundOnSearch() {
   const data = await getWeather();
   const currentTime = data.dt;
   const { sunrise, sunset } = data.sys;
+
   if (currentTime >= sunrise && currentTime < sunset) {
     // daytime image
     container.style.backgroundImage =
-      'url(../assets/aaron-burden-BTubi6qaY6Q-unsplash.jpg)';
+      'url(assets/aaron-burden-BTubi6qaY6Q-unsplash.jpg)';
   } else {
     // nighttime image
     container.style.backgroundImage =
@@ -53,4 +55,6 @@ async function changeBackground() {
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
 
-export { updateView, updateWeeklyView, changeBackground };
+// event listeners
+window.addEventListener('load', setDefaultBackground);
+export { updateView, updateWeeklyView, changeBackgroundOnSearch };
