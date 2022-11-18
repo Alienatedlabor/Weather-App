@@ -14,9 +14,7 @@ const container = document.querySelector('.grid-wrapper');
 
 // function
 
-async function updateView(lat, lon) {
-  const data = await getWeather(lat, lon);
-
+async function updateView(data) {
   const { convertedSunrise, convertedSunset } = timeConvert(
     data.sys.sunrise,
     data.sys.sunset
@@ -36,10 +34,8 @@ async function updateWeeklyView() {
   const weeklyData = await getWeeklyWeather();
   // console.log(weeklyData);
 }
-function setDefaultBackground() {}
 
-async function changeBackgroundOnSearch() {
-  const data = await getWeather();
+async function changeBackground(data) {
   const currentTime = data.dt;
   const { sunrise, sunset } = data.sys;
 
@@ -53,20 +49,15 @@ async function changeBackgroundOnSearch() {
       'url(assets/mason-field-efLEMOPlPW8-unsplash.jpg)';
   }
 }
-
 window.onload = async () => {
-  const locationData = await getCurrentLocation();
-  const { latitude, longitude } = locationData.coords;
-  const { timestamp } = locationData;
-  updateView(latitude, longitude);
+  const userLocation = await getCurrentLocation();
+  const { latitude, longitude } = userLocation.coords;
+  const data = await getWeather(latitude, longitude);
+  updateView(data);
+  changeBackground(data);
 };
 
-// console.log(position.coords.latitude);
-// console.log(position.coords.longitude);
-// console.log(timestamp);
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
 
-// event listeners
-window.addEventListener('load', setDefaultBackground);
-export { updateView, updateWeeklyView, changeBackgroundOnSearch };
+export { updateView, updateWeeklyView, changeBackground };
