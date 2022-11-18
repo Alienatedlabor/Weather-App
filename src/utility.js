@@ -19,23 +19,12 @@ const cToF = (celsiusInput) => {
   farenheitResult = Math.round(farenheitResult * 10) / 10;
   return farenheitResult;
 };
+// geolocation API https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+const getCurrentLocation = () =>
+  new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
 
-const getCurrentLocation = () => {
-  const success = (position) => {
-    console.log(position);
-  };
-
-  const error = (err) => {
-    console.log(err);
-    alert('local weather cannot be displayed without location permissions');
-  };
-
-  navigator.geolocation.getCurrentPosition(success, error);
-};
-
-window.onload = () => {
-  getCurrentLocation();
-};
 export { timeConvert, fToC, cToF, getCurrentLocation };
 
 // src=`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`

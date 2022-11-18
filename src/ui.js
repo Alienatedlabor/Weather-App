@@ -1,5 +1,5 @@
 import { getWeather, getWeeklyWeather } from './weather';
-import { timeConvert } from './utility';
+import { timeConvert, getCurrentLocation } from './utility';
 
 // query selectors
 const currentCity = document.querySelector('.current-city');
@@ -13,8 +13,9 @@ const description = document.querySelector('.description');
 const container = document.querySelector('.grid-wrapper');
 
 // function
-async function updateView() {
-  const data = await getWeather();
+
+async function updateView(lat, lon) {
+  const data = await getWeather(lat, lon);
 
   const { convertedSunrise, convertedSunset } = timeConvert(
     data.sys.sunrise,
@@ -33,7 +34,7 @@ async function updateView() {
 
 async function updateWeeklyView() {
   const weeklyData = await getWeeklyWeather();
-  console.log(weeklyData);
+  // console.log(weeklyData);
 }
 function setDefaultBackground() {}
 
@@ -52,6 +53,17 @@ async function changeBackgroundOnSearch() {
       'url(assets/mason-field-efLEMOPlPW8-unsplash.jpg)';
   }
 }
+
+window.onload = async () => {
+  const locationData = await getCurrentLocation();
+  const { latitude, longitude } = locationData.coords;
+  const { timestamp } = locationData;
+  updateView(latitude, longitude);
+};
+
+// console.log(position.coords.latitude);
+// console.log(position.coords.longitude);
+// console.log(timestamp);
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
 

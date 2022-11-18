@@ -12,16 +12,15 @@ async function getCoordinates() {
   return { lat, lon };
 }
 
-// getWeather() takes the latitude and longitude properties fetched by getCoordinates and retrieves current weather data for that location.
+// getWeather() takes the latitude and longitude properties fetched by getCoordinates or getCurrentLocation and retrieves current weather data for that location.
 // documentation: https://openweathermap.org/current
-async function getWeather() {
-  const { lat, lon } = await getCoordinates();
+async function getWeather(lat, lon) {
+  // const { lat, lon } = await getCoordinates();
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=9233d7d5b5dca12db8dc4eccb6554d50`,
     { mode: 'cors' }
   );
   const weatherData = await response.json();
-  console.log(weatherData);
   return weatherData;
 }
 // weeklyData.filter each list object that includes dt_txt: 13:00:00 and destructure for temp
@@ -32,6 +31,6 @@ async function getWeeklyWeather() {
     { mode: 'cors' }
   );
   const weeklyData = await response.json();
-  console.log(weeklyData);
+  // console.log(weeklyData);
 }
-export { getWeather, getWeeklyWeather };
+export { getWeather, getWeeklyWeather, getCoordinates };
