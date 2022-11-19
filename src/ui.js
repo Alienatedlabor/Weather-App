@@ -11,7 +11,7 @@ const sunriseText = document.querySelector('.sunrise');
 const sunsetText = document.querySelector('.sunset');
 const description = document.querySelector('.description');
 const container = document.querySelector('.grid-wrapper');
-
+const unitSwitchButton = document.querySelector('.measurement-switch');
 // function
 
 async function updateView(data) {
@@ -49,13 +49,6 @@ async function changeBackground(data) {
       'url(assets/mason-field-efLEMOPlPW8-unsplash.jpg)';
   }
 }
-window.onload = async () => {
-  const userLocation = await getCurrentLocation();
-  const { latitude, longitude } = userLocation.coords;
-  const data = await getWeather(latitude, longitude);
-  updateView(data);
-  changeBackground(data);
-};
 
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
