@@ -1,5 +1,5 @@
-import { getWeather, getWeeklyWeather } from './weather';
-import { timeConvert, getCurrentLocation } from './utility';
+import { getWeeklyWeather } from './weather';
+import { timeConvert } from './utility';
 
 // query selectors
 const currentCity = document.querySelector('.current-city');
@@ -11,9 +11,8 @@ const sunriseText = document.querySelector('.sunrise');
 const sunsetText = document.querySelector('.sunset');
 const description = document.querySelector('.description');
 const container = document.querySelector('.grid-wrapper');
-const unitSwitchButton = document.querySelector('.measurement-switch');
-// function
 
+// function
 async function updateView(data) {
   const { convertedSunrise, convertedSunset } = timeConvert(
     data.sys.sunrise,
@@ -50,7 +49,15 @@ async function changeBackground(data) {
   }
 }
 
+// function getCurrentUnit(){
+//   let unit
+//   if (unitSwitchButton.textContent === 'Switch to F'){
+
+//   }
+// }
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
+
+// event listeners
 
 export { updateView, updateWeeklyView, changeBackground };
