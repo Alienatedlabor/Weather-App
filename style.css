@@ -41,6 +41,9 @@ main {
 .current-results {
   display: grid;
 }
+.temp {
+  font-size: 40px;
+}
 .current-temp {
   font-size: 60px;
 }
