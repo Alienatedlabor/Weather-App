@@ -6,25 +6,38 @@ const SEARCHBAR = document.querySelector('.search-field');
 const SEARCHBUTTON = document.querySelector('.search-button');
 const unitSwitchButton = document.querySelector('.measurement-switch');
 const unitSwitchText = document.querySelector('.measurement-switch span');
-const currentTempUnit = document.querySelector('.current-temp-unit');
+const currentTempUnit = document.querySelectorAll('.temp-unit');
+let userLat;
+let userLon;
 async function handleSubmit(e) {
   e.preventDefault();
   // lat lon is passed to updateView on submit
   const { lat, lon } = await getCoordinates();
-  const data = await getWeather(lat, lon);
+  userLat = lat;
+  userLon = lon;
+  const data = await getWeather(userLat, userLon);
 
   updateView(data);
   updateWeeklyView();
   changeBackground(data);
   SEARCHBAR.value = '';
+  console.log(data);
 }
-
+if (handleSubmit) {
+  console.log('e');
+}
 window.onload = async () => {
   const userLocation = await getCurrentLocation();
-  const { latitude, longitude } = userLocation.coords;
-  const data = await getWeather(latitude, longitude);
+  userLat = userLocation.coords.latitude;
+  userLon = userLocation.coords.longitude;
+  const data = await getWeather(userLat, userLon);
   updateView(data);
   changeBackground(data);
+  currentTempUnit.forEach((tempUnit) => {
+    // eslint-disable-next-line no-param-reassign
+    tempUnit.textContent = 'C';
+  });
+  console.log(userLocation);
 };
 
 async function handleUnitSwitch() {
@@ -33,15 +46,21 @@ async function handleUnitSwitch() {
   if (unitSwitchText.textContent === 'F') {
     units = 'imperial';
     unitSwitchText.textContent = 'C';
-    currentTempUnit.textContent = 'F';
+    currentTempUnit.forEach((tempUnit) => {
+      // eslint-disable-next-line no-param-reassign
+      tempUnit.textContent = 'F';
+    });
   } else if (unitSwitchText.textContent === 'C') {
     units = 'metric';
     unitSwitchText.textContent = 'F';
+    currentTempUnit.textContent = 'C';
+    currentTempUnit.forEach((tempUnit) => {
+      // eslint-disable-next-line no-param-reassign
+      tempUnit.textContent = 'C';
+    });
   }
 
-  const userLocation = await getCurrentLocation();
-  const { latitude, longitude } = userLocation.coords;
-  const data = await getWeather(latitude, longitude, units);
+  const data = await getWeather(userLat, userLon, units);
   updateView(data);
   changeBackground(data);
 }
@@ -49,6 +68,9 @@ async function handleUnitSwitch() {
 unitSwitchButton.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleSubmit);
 
-// TODO: refactor tempconversion in utility.js
 // TODO: attempt weekly weather
 // TODO: style- main, and consider different background presentation
+
+// maybe I can separate the userlocation call currently at bottom of handleUnitSwitch from the top half of handleUnitSwitch-
+// handleUnitSwitch would only return and display correct unit based on button textContent,
+// the onload and handleSubmit event  would take unit as argument
