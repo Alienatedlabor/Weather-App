@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: Helvetica, sans-serif;
+}
 .grid-wrapper {
   display: grid;
-  grid-template-rows: 0.25fr 5fr 3fr 0.25fr;
+  grid-template-rows: 0.25fr 2fr 2fr 0.25fr;
   background-color: #0f172a;
   color: ghostwhite;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
@@ -14,6 +19,8 @@
 header {
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 2rem;
 }
 .search-bar {
@@ -30,33 +37,87 @@ header {
 .search-field:focus {
   outline: none;
 }
+form {
+  display: flex;
+  gap: 1rem;
+}
+.search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
 button {
   cursor: pointer;
   margin-top: 8px;
 }
+.measurement-switch {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.measurement-switch:hover {
+  color: yellow;
+}
 main {
   width: 100vw;
-  height: 70vh;
+}
+.box {
+  background-color: black;
+  opacity: 50%;
+  margin: 2%;
+  border-radius: 8px;
 }
 .current-results {
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  font-size: 16px;
+}
+label {
+  font-size: 18px;
+}
+.location {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.main-temp {
+  grid-area: 1/ 1/ 4/ 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 .temp {
   font-size: 40px;
 }
 .current-temp {
-  font-size: 60px;
+  font-size: 70px;
+}
+.wd {
+  margin-bottom: 1rem;
 }
 h1 {
   display: flex;
   justify-content: center;
   color: white;
+  font-family: 'PT Serif', serif;
 }
 h2 {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
   color: white;
+  font-family: 'PT Serif', serif;
+}
+.weekly-section {
+  background-color: black;
+  opacity: 50%;
+  margin: 2%;
+  border-radius: 8px;
 }
 .week-row {
   display: flex;
