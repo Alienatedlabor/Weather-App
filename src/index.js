@@ -9,36 +9,6 @@ const unitSwitchText = document.querySelector('.measurement-switch span');
 const currentTempUnit = document.querySelectorAll('.temp-unit');
 let userLat;
 let userLon;
-async function handleSubmit(e) {
-  e.preventDefault();
-  // lat lon is passed to updateView on submit
-  const { lat, lon } = await getCoordinates();
-  userLat = lat;
-  userLon = lon;
-  const data = await getWeather(userLat, userLon);
-
-  updateView(data);
-  updateWeeklyView();
-  changeBackground(data);
-  SEARCHBAR.value = '';
-  console.log(data);
-}
-if (handleSubmit) {
-  console.log('e');
-}
-window.onload = async () => {
-  const userLocation = await getCurrentLocation();
-  userLat = userLocation.coords.latitude;
-  userLon = userLocation.coords.longitude;
-  const data = await getWeather(userLat, userLon);
-  updateView(data);
-  changeBackground(data);
-  currentTempUnit.forEach((tempUnit) => {
-    // eslint-disable-next-line no-param-reassign
-    tempUnit.textContent = 'C';
-  });
-  console.log(userLocation);
-};
 
 async function handleUnitSwitch() {
   let units;
@@ -65,7 +35,35 @@ async function handleUnitSwitch() {
   changeBackground(data);
 }
 
+async function handleSubmit(e) {
+  e.preventDefault();
+  // lat lon is passed to updateView on submit
+  const { lat, lon } = await getCoordinates();
+  userLat = lat;
+  userLon = lon;
+  const data = await getWeather(userLat, userLon);
+
+  updateView(data);
+  updateWeeklyView();
+  changeBackground(data);
+  SEARCHBAR.value = '';
+}
+
+window.onload = async () => {
+  const userLocation = await getCurrentLocation();
+  userLat = userLocation.coords.latitude;
+  userLon = userLocation.coords.longitude;
+  const data = await getWeather(userLat, userLon);
+  updateView(data);
+  changeBackground(data);
+  currentTempUnit.forEach((tempUnit) => {
+    // eslint-disable-next-line no-param-reassign
+    tempUnit.textContent = 'C';
+  });
+};
+
 unitSwitchButton.addEventListener('click', handleUnitSwitch);
+SEARCHBUTTON.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleSubmit);
 
 // TODO: attempt weekly weather
