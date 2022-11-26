@@ -31,8 +31,10 @@ async function handleUnitSwitch() {
   }
 
   const data = await getWeather(userLat, userLon, units);
+  const weeklyData = await getWeeklyWeather(userLat, userLon, units);
   updateView(data);
   changeBackground(data);
+  updateWeeklyView(weeklyData);
 }
 
 async function handleSubmit(e) {
@@ -57,18 +59,17 @@ window.onload = async () => {
   const data = await getWeather(userLat, userLon);
   updateView(data);
   changeBackground(data);
+
+  const weeklyData = await getWeeklyWeather(userLat, userLon);
+  updateWeeklyView(weeklyData);
   currentTempUnit.forEach((tempUnit) => {
     // eslint-disable-next-line no-param-reassign
     tempUnit.textContent = 'C';
   });
-
-  const weeklyData = await getWeeklyWeather(userLat, userLon);
-  updateWeeklyView(weeklyData);
 };
 
 unitSwitchButton.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleSubmit);
-
-// TODO: attempt weekly weather
 // TODO: style- main, and consider different background presentation
+export default handleUnitSwitch;

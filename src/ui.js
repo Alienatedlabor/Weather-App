@@ -1,5 +1,5 @@
 import { timeConvert } from './utility';
-
+import { handleUnitSwitch } from './index.js';
 // query selectors
 const currentCity = document.querySelector('.current-city');
 const country = document.querySelector('.country');
@@ -10,7 +10,10 @@ const sunriseText = document.querySelector('.sunrise');
 const sunsetText = document.querySelector('.sunset');
 const description = document.querySelector('.description');
 const container = document.querySelector('.grid-wrapper');
-
+const fiveDays = document.querySelectorAll('[data-weekday] .weekly-temp');
+const iconContainer = document.querySelectorAll('.icon');
+const currentTempUnit = document.querySelectorAll('.temp-unit');
+console.log(fiveDays);
 // function
 async function updateView(data) {
   const { convertedSunrise, convertedSunset } = timeConvert(
@@ -33,6 +36,13 @@ async function updateWeeklyView(weeklyData) {
     result.dt_txt.includes('12:00:00')
   );
   console.log(results);
+  for (let i = 0; i <= 4; i++) {
+    let iconCode = results[i].weather[0].icon;
+    let imageURL = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    iconContainer[i].src = imageURL;
+
+    fiveDays[i].textContent = `${results[i].main.temp}`;
+  }
 }
 
 async function changeBackground(data) {

@@ -9,5 +9,9 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  rules: { 'no-console': 'off', 'no-unused-vars': 'warn' },
+  rules: {
+    'no-console': 'off',
+    'no-unused-vars': 'warn',
+    allowForLoopAfterthoughts: 'true',
+  },
 };
