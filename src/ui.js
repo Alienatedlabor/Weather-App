@@ -1,5 +1,5 @@
 import { timeConvert } from './utility';
-import { handleUnitSwitch } from './index.js';
+
 // query selectors
 const currentCity = document.querySelector('.current-city');
 const country = document.querySelector('.country');

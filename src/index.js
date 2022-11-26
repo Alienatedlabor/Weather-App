@@ -48,6 +48,7 @@ async function handleSubmit(e) {
   updateView(data);
   changeBackground(data);
   const weeklyData = await getWeeklyWeather(userLat, userLon);
+  handleUnitSwitch();
   updateWeeklyView(weeklyData);
   SEARCHBAR.value = '';
 }
@@ -61,15 +62,16 @@ window.onload = async () => {
   changeBackground(data);
 
   const weeklyData = await getWeeklyWeather(userLat, userLon);
-  updateWeeklyView(weeklyData);
   currentTempUnit.forEach((tempUnit) => {
     // eslint-disable-next-line no-param-reassign
     tempUnit.textContent = 'C';
   });
+  updateWeeklyView(weeklyData);
 };
 
 unitSwitchButton.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleSubmit);
+// TODO: fix unit default Farenheit
+// TODO: change 5day headers from weekdays to dates.
 // TODO: style- main, and consider different background presentation
-export default handleUnitSwitch;
