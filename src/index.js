@@ -1,5 +1,5 @@
 import { changeBackground, updateView, updateWeeklyView } from './ui';
-import { getCoordinates, getWeather } from './weather';
+import { getCoordinates, getWeather, getWeeklyWeather } from './weather';
 import { getCurrentLocation } from './utility';
 
 const SEARCHBAR = document.querySelector('.search-field');
@@ -44,8 +44,9 @@ async function handleSubmit(e) {
   const data = await getWeather(userLat, userLon);
 
   updateView(data);
-  updateWeeklyView();
   changeBackground(data);
+  const weeklyData = await getWeeklyWeather(userLat, userLon);
+  updateWeeklyView(weeklyData);
   SEARCHBAR.value = '';
 }
 
@@ -60,6 +61,9 @@ window.onload = async () => {
     // eslint-disable-next-line no-param-reassign
     tempUnit.textContent = 'C';
   });
+
+  const weeklyData = await getWeeklyWeather(userLat, userLon);
+  updateWeeklyView(weeklyData);
 };
 
 unitSwitchButton.addEventListener('click', handleUnitSwitch);
@@ -68,7 +72,3 @@ SEARCHBUTTON.addEventListener('click', handleSubmit);
 
 // TODO: attempt weekly weather
 // TODO: style- main, and consider different background presentation
-
-// maybe I can separate the userlocation call currently at bottom of handleUnitSwitch from the top half of handleUnitSwitch-
-// handleUnitSwitch would only return and display correct unit based on button textContent,
-// the onload and handleSubmit event  would take unit as argument

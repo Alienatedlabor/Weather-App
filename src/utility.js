@@ -6,7 +6,6 @@ function timeConvert(sunriseUTC, sunsetUTC) {
   return { convertedSunrise, convertedSunset };
 }
 // these will run when the fahrenheit/celsius button is pressed and convert the fetched temperature
-// refactor for weather app
 
 const fToC = (farenheitInput) => {
   let celsiusResult = ((farenheitInput - 32) * 5) / 9;

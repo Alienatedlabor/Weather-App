@@ -1,4 +1,3 @@
-import { getWeeklyWeather } from './weather';
 import { timeConvert } from './utility';
 
 // query selectors
@@ -29,9 +28,11 @@ async function updateView(data) {
   sunsetText.textContent = convertedSunset;
 }
 
-async function updateWeeklyView() {
-  const weeklyData = await getWeeklyWeather();
-  // console.log(weeklyData);
+async function updateWeeklyView(weeklyData) {
+  const results = weeklyData.list.filter((result) =>
+    result.dt_txt.includes('12:00:00')
+  );
+  console.log(results);
 }
 
 async function changeBackground(data) {
@@ -49,11 +50,6 @@ async function changeBackground(data) {
   }
 }
 
-// function getCurrentUnit(){
-//   let unit
-//   if (unitSwitchButton.textContent === 'Switch to F'){
-
-//   }
 // }
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
