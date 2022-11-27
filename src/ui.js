@@ -13,7 +13,6 @@ const container = document.querySelector('.grid-wrapper');
 const fiveDays = document.querySelectorAll('[data-weekday] .weekly-temp');
 const iconContainer = document.querySelectorAll('.icon');
 const weekdayContainer = document.querySelectorAll('.week-date');
-console.log(fiveDays);
 // function
 async function updateView(data) {
   const { convertedSunrise, convertedSunset } = timeConvert(
@@ -35,7 +34,6 @@ async function updateWeeklyView(weeklyData) {
   const results = weeklyData.list.filter((result) =>
     result.dt_txt.includes('12:00:00')
   );
-  console.log(results);
   for (let i = 0; i <= 4; i++) {
     let iconCode = results[i].weather[0].icon;
     let imageURL = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
