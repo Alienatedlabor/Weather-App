@@ -18,7 +18,9 @@ a weather app built with vanilla javascript, using OpenWeather API
 <li>ES Lint was used to enforce code style</li>
 <li>Date-fns javascript library to help work with dates and times.</li>
 <li>Webpack</li>
+
 <strong> Learning Opportunities:</strong>
+
 <p>
   This project helped familiarize me with API queries using asynchronous functions, particularly ES6 async and await. It provided good modularization practice via webpack modules, and good practice working with JSON objects- extracting and displaying data pulled from the results of a fetch. 
 </p>
