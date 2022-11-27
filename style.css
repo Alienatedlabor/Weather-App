@@ -105,6 +105,7 @@ h1 {
   justify-content: center;
   color: white;
   font-family: 'PT Serif', serif;
+  padding-top: 1rem;
 }
 h2 {
   display: flex;
@@ -112,6 +113,7 @@ h2 {
   margin-bottom: 1rem;
   color: white;
   font-family: 'PT Serif', serif;
+  margin-top: 1rem;
 }
 .weekly-section {
   background-color: black;
@@ -123,15 +125,17 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
   margin-bottom: 2rem;
   width: 100vw;
 }
 .week-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   height: 30vh;
+  justify-content: center;
+  align-items: center;
 }
 h3 {
   display: flex;
