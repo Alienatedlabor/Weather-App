@@ -12,7 +12,7 @@ const description = document.querySelector('.description');
 const container = document.querySelector('.grid-wrapper');
 const fiveDays = document.querySelectorAll('[data-weekday] .weekly-temp');
 const iconContainer = document.querySelectorAll('.icon');
-const currentTempUnit = document.querySelectorAll('.temp-unit');
+const weekdayContainer = document.querySelectorAll('.week-date');
 console.log(fiveDays);
 // function
 async function updateView(data) {
@@ -41,7 +41,15 @@ async function updateWeeklyView(weeklyData) {
     let imageURL = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
     iconContainer[i].src = imageURL;
 
+    // TEMP
     fiveDays[i].textContent = `${results[i].main.temp}`;
+
+    // DAY
+    let date = `${results[i].dt_txt.replaceAll('12:00:00', '')}`;
+    const [year, month, day] = date.split('-');
+    const formattedDate = [month, day, year].join('/ ');
+
+    weekdayContainer[i].textContent = formattedDate;
   }
 }
 

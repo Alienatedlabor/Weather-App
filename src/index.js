@@ -72,6 +72,4 @@ window.onload = async () => {
 unitSwitchButton.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleUnitSwitch);
 SEARCHBUTTON.addEventListener('click', handleSubmit);
-// TODO: fix unit default Farenheit
-// TODO: change 5day headers from weekdays to dates.
 // TODO: style- main, and consider different background presentation
