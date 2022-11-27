@@ -18,7 +18,7 @@ a weather app built with vanilla javascript, using OpenWeather API
 <li>ES Lint was used to enforce code style</li>
 <li>Date-fns javascript library to help work with dates and times.</li>
 <li>Webpack</li>
-
+<br>
 <strong> Learning Opportunities:</strong>
 
 <p>
