@@ -4,7 +4,7 @@ const SEARCHBAR = document.querySelector('.search-field');
 // Geocoding API documentation: https://openweathermap.org/api/geocoding-api
 async function getCoordinates() {
   const response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${SEARCHBAR.value}&limit=3&appid=9233d7d5b5dca12db8dc4eccb6554d50`,
+    `https://api.openweathermap.org/geo/1.0/direct?q=${SEARCHBAR.value}&limit=3&appid=9233d7d5b5dca12db8dc4eccb6554d50`,
     { mode: 'cors' }
   );
   const data = await response.json();
