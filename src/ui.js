@@ -34,16 +34,17 @@ async function updateWeeklyView(weeklyData) {
   const results = weeklyData.list.filter((result) =>
     result.dt_txt.includes('12:00:00')
   );
+
   for (let i = 0; i <= 4; i++) {
-    let iconCode = results[i].weather[0].icon;
-    let imageURL = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    const iconCode = results[i].weather[0].icon;
+    const imageURL = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
     iconContainer[i].src = imageURL;
 
     // TEMP
     fiveDays[i].textContent = `${results[i].main.temp}`;
 
     // DAY
-    let date = `${results[i].dt_txt.replaceAll('12:00:00', '')}`;
+    const date = `${results[i].dt_txt.replaceAll('12:00:00', '')}`;
     const [year, month, day] = date.split('-');
     const formattedDate = [month, day, year].join('/ ');
 
@@ -66,7 +67,6 @@ async function changeBackground(data) {
   }
 }
 
-// }
 // grab and insert icon on page:
 // let icon = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
 

@@ -12,6 +12,6 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-unused-vars': 'warn',
-    allowForLoopAfterthoughts: 'true',
+    'no-plusplus': 'warn',
   },
 };
